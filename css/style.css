@@ -1,0 +1,44 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+#game {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 900px;
+  height: 400px;
+  background-color: aliceblue;
+  box-shadow: 0px 0px 5px #00000080;
+  border-radius: 5px;
+}
+.dinosaur{
+  width: 20px;
+  height: 50px;
+  background-color: red;
+  position: relative;
+  top: 350px;
+  animation: jump ease-in 0.9s infinite;
+}
+@keyframes jump {
+    0%{top: 350px;}
+    30%{top: 300px;}
+    80%{top: 320px;}
+    100%{top: 350px;}
+}
+.block{
+    width: 20px;
+    height: 20px;
+    background-color: #000000;
+    position: relative;
+    top: 330px;
+    left: 880px;
+    animation: linear block 2s infinite;
+}
+@keyframes block {
+    0%{left:880px;}
+    100%{left: 0px;}
+}

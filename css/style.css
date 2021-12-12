@@ -1,27 +1,31 @@
-* {
-  padding: 0;
-  margin: 0;
+*{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
 }
-#game {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 900px;
-  height: 400px;
-  background-color: aliceblue;
-  box-shadow: 0px 0px 5px #00000080;
-  border-radius: 5px;
+.game{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 900px;
+    height: 400px;
+    background-color: aliceblue;
+    box-shadow: 0px 0px 5px #00000080;
+    border-radius: 5px;
 }
-.dinosaur{
-  width: 20px;
-  height: 50px;
-  background-color: red;
-  position: relative;
-  top: 350px;
-  animation: jump ease-in 0.9s infinite;
+#dinosaur{
+    width: 20px;
+    height: 50px;
+    background-color: red;
+    position: relative;
+    top: 350px;
+    left: 10px;
+}
+.animate{
+    animation: jump 0.3s ease-in;
 }
 @keyframes jump {
     0%{top: 350px;}
@@ -29,16 +33,20 @@
     80%{top: 320px;}
     100%{top: 350px;}
 }
-.block{
+
+#block{
     width: 20px;
     height: 20px;
     background-color: #000000;
     position: relative;
     top: 330px;
     left: 880px;
-    animation: linear block 2s infinite;
+    animation: block 1s infinite linear;
 }
-@keyframes block {
-    0%{left:880px;}
-    100%{left: 0px;}
+@keyframes block{
+    0%{left: 500px}
+    100%{left: -20px}
+}
+p{
+    text-align: center;
 }

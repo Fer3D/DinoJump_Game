@@ -1,30 +1,42 @@
-var dinosaur = document.getElementById("dinosaur");
-var block = document.getElementById("block");
-var counter = 0;
+var dinosaur = document.getElementById("dinosaur"),
+    block = document.getElementById("block"),
+    message = document.getElementById("msg"),
+    scoreSpan = document.getElementById("scoreSpan"),
+    frameCounter = 0,
+    gameState = 0;
 function jump() {
-    if (dinosaur.classList == "animate") {
+    if (gameState != 1) {
+        if (gameState == 2) {
+            frameCounter = 0;
+            scoreSpan.textContent = 0;
+            block.style.animation = "none";
+            block.offsetWidth;
+        }
+        gameState = 1;
+        message.textContent = "";
+        dinosaur.classList.remove("blink");
+        block.style.animation = "block 1s infinite linear";
         return;
     }
+    if (dinosaur.classList.contains("animate")) return;
     dinosaur.classList.add("animate");
     setTimeout(function () {
         dinosaur.classList.remove("animate");
     }, 300);
 }
-document.onkeydown=e=>e.code=="Space"&&(e.preventDefault(),jump());
-var checkDead = setInterval(function () {
-    let dinosaurTop = parseInt(
-        window.getComputedStyle(dinosaur).getPropertyValue("top")
-    );
-    let blockLeft = parseInt(
-        window.getComputedStyle(block).getPropertyValue("left")
-    );
+document.onkeydown = function (event) {
+    event.code == "Space" && (event.preventDefault(), jump());
+};
+setInterval(function () {
+    if (gameState != 1) return;
+    var dinosaurTop = parseInt(getComputedStyle(dinosaur).top),
+        blockLeft = parseInt(getComputedStyle(block).left);
     if (blockLeft < 20 && blockLeft > -20 && dinosaurTop >= 330) {
+        gameState = 2;
         block.style.animation = "none";
-        alert("Game Over. score: " + Math.floor(counter / 100));
-        counter = 0;
-        block.style.animation = "block 1s infinite linear";
+        message.textContent = "GAME OVER — " + (frameCounter / 100 | 0) + " — SPACE";
     } else {
-        counter++;
-        document.getElementById("scoreSpan").innerHTML = Math.floor(counter / 100);
+        frameCounter++;
+        scoreSpan.textContent = frameCounter / 100 | 0;
     }
 }, 10);

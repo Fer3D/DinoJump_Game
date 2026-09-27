@@ -46,8 +46,8 @@
   width: 20px;
   height: 20px;
   background-color: #000000;
-  position: relative;
-  top: 330px;
+  position: absolute;
+  top: 380px;
   left: 880px;
 }
 #msg {
@@ -67,7 +67,7 @@
 }
 @keyframes block {
   0% {
-    left: 500px;
+    left: 880px;
   }
   100% {
     left: -20px;

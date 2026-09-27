@@ -10,6 +10,7 @@ function jump() {
         dinosaur.classList.remove("animate");
     }, 300);
 }
+document.onkeydown=e=>e.code=="Space"&&(e.preventDefault(),jump());
 var checkDead = setInterval(function () {
     let dinosaurTop = parseInt(
         window.getComputedStyle(dinosaur).getPropertyValue("top")
